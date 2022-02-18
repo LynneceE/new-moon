@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS new_moon_db;
+
+CREATE DATABASE new_moon_db;
