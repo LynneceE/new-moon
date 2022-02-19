@@ -48,6 +48,34 @@ router.post('/', (req, res) => {
         });
 });
 
+// POST /api/users/login
+router.post('/login', (req, res) => {
+  User.findOne({
+    where: {
+      email: req.body.email
+    }
+  }).then(dbUserData => {
+    if (!dbUserData) {
+      res.status(400).json({ message: 'No user with that email address!' });
+      return;
+    }
+
+    
+
+    // Verify user
+    const validPassword = dbUserData.checkPassword(req.body.password); // refers to checkPassword in User.js
+    // control statement to verify the user is verified
+    if (!validPassword) {
+      res.status(400).json({message: 'Incorrect Password!'});
+      return;
+    }
+
+    //else
+    res.json({ user: dbUserData, message: 'You are now logged in!'});
+
+  });  
+});
+
 // PUT /api/users/1
 router.put('/:id', (req, res) => {
     User.update(req.body, {
