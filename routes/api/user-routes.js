@@ -50,7 +50,8 @@ router.post('/', (req, res) => {
 
 // PUT /api/users/1
 router.put('/:id', (req, res) => {
-    User.update(req.body, { 
+    User.update(req.body, {
+      individualHooks: true, // makes sure updated password gets hashed 
         where: {
           id: req.params.id
         }
