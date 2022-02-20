@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const { parseTwoDigitYear } = require('moment');
-const { Post, User } = require('../../models');
+const { Post, User, Comment } = require('../../models');
 
 //GET ALL USERS
 router.get('/', (req, res) => {
@@ -8,6 +7,14 @@ router.get('/', (req, res) => {
         attributes: [ 'id', 'post_url', 'title', 'created_at' ], // created at auto-generated
         order: [[ 'created_at', 'DESC']],
         include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
             {
                 model: User,
                 attributes: [ 'username' ]
@@ -29,6 +36,14 @@ router.get('/:id', (req, res) => {
         },
         attributes: [ 'id', 'post_url', 'title', 'created_at'],
         include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
             {
                 model: User,
                 attributes: ['username']
