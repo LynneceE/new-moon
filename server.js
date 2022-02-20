@@ -14,5 +14,5 @@ app.use(routes);
 
 // turn on connection to db and server
 sequelize.sync({ force: false }).then(() => { // change force: false to true when making changes to Sequelize models
-  app.listen(PORT, () => console.log('Now listening', `http:localhost:${PORT}`));
+  app.listen(PORT, () => console.log('Now listening', `http://localhost:${PORT}`));
 });
