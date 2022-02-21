@@ -39,6 +39,7 @@ router.get('/', (req,res) => {
 
 //LOGIN PAGE
 router.get('/login', (req, res) => {
+    console.log(req.session);
     res.render('login');
   });
 
