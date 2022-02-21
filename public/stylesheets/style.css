@@ -7,7 +7,7 @@
     padding: 0;
     margin: 0;
     font-family: sans-serif;
-    background-color: rgb(240, 233, 233);
+    background-color: #f0e9e9;
     
   }
   
@@ -113,9 +113,8 @@
     padding: 2% 4%;
   }
   
-  .btn-no-style {
-    background: none;
-    border: none;
+  .btn-logout {
+   background-color: #f0e9e9;
     padding: 0;
     cursor: pointer;
     text-decoration: none;
@@ -124,9 +123,10 @@
     font-weight: bold;
     transition: color .1s;
     margin-left: 16px;
+    margin-right: 50px;
   }
   
-  .btn-no-style:hover {
+  .btn-logout:hover {
     background: none;
     color: #3486eb;
   }
